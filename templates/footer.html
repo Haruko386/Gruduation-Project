@@ -1,10 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+<style>
+    .tooltip-inner {
+        max-width: none !important; /* 调整工具提示内容的最大宽度 */
+    }
 
-</body>
-</html>
+    .link-item {
+        border-right: 1px solid #ccc; /* 添加右侧竖线 */
+        padding-right: 10px; /* 右侧内边距 */
+    }
+
+    .link-item:last-child {
+        border-right: none; /* 最后一个链接去掉右侧边框 */
+    }
+</style>
+<!-- Footer -->
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-2 link-item" align="center">
+                友情链接：
+            </div>
+            <div class="col-2 link-item" align="center">
+                <a href="https://www.cac.gov.cn/" data-toggle="tooltip" title="链接1">央视新闻</a>
+            </div>
+            <div class="col-2 link-item" align="center">
+                <a href="https://www.mem.gov.cn/index.shtml" data-toggle="tooltip" title="链接2">应急管理部</a>
+            </div>
+            <div class="col-2 link-item" align="center">
+                <a href="http://yjt.shanxi.gov.cn/" data-toggle="tooltip" title="链接3">山西省应急管理厅</a>
+            </div>
+            <div class="col-2 link-item" align="center">
+                <a href="http://www.moe.gov.cn/" data-toggle="tooltip" title="链接4">教育部</a>
+            </div>
+            <div class="col-2" align="center">
+                <a href="https://www.cac.gov.cn/" data-toggle="tooltip" title="链接5">网信办</a>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .logo-link {
+        display: flex;
+        align-items: center;
+        margin-right: 10px; /* 间距，根据需求调整 */
+    }
+
+    .logo-link:last-child {
+        margin-right: 0; /* 移除最后一个链接的右边距 */
+    }
+
+    .logo-img {
+        /* 限制图片大小，例如设置为32x32像素 */
+        width: 32px;
+        height: 32px;
+        /* 如果需要，可以添加其他图片样式，如边框、圆角等 */
+    }
+
+    .logo-beian {
+        /* 限制图片大小，例如设置为32x32像素 */
+        width: 20px;
+        height: 20px;
+        /* 如果需要，可以添加其他图片样式，如边框、圆角等 */
+    }
+
+    .logo-text {
+        /* 放大文字，并设置为白色 */
+        font-size: 16px; /* 根据需要调整字体大小 */
+        color: #fff; /* 设置为白色 */
+        /* 如果需要，可以添加其他文字样式，如字体、行高等 */
+        margin-left: 5px; /* 根据需要调整文字与图片之间的间距 */
+    }
+
+    /* 添加或修改以下CSS规则 */
+    .navbar-nav {
+        display: flex;
+        justify-content: center; /* 水平居中对齐 */
+        flex-direction: column; /* 如果希望垂直居中，则使用此行，并且可能需要调整外部容器的高度 */
+        list-style-type: none;
+        padding-inline-start: 0; /* 移除默认的左内边距 */
+    }
+
+    /* 如果需要保持水平布局并居中 */
+    .navbar-nav.horizontal {
+        flex-direction: row;
+        justify-content: center;
+    }
+</style>
+<footer class="py-3 bg-dark sticky-bottom">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <p class="m-0 text-center text-white" align="center">晋ICP证05000465号 <img
+                src="https://dimon0000000.github.io/img/police_beian.png" class="logo-beian"> 晋公网安备 14010902001579号
+        </p>
+        <div class="d-flex justify-content-center mt-3">
+            <a href="https://dimon0000000.github.io/" class="d-flex align-items-center logo-link">
+                <img src="{% static 'img/ico/博客.png' %}" alt="个人博客" class="mr-2 logo-img">
+                <span class="logo-text">个人博客</span>
+            </a>
+            <a href="https://space.bilibili.com/291003955?spm_id_from=333.1007.0.0"
+               class="d-flex align-items-center logo-link">
+                <img src="{% static 'img/ico/哔哩哔哩.png' %}" alt="哔哩哔哩" class="mr-2 logo-img">
+                <span class="logo-text">哔哩哔哩</span>
+            </a>
+            <a href="https://www.instagram.com/endless_developy/" class="d-flex align-items-center logo-link">
+                <img src="{% static 'img/ico/instgram.png' %}" alt="Ins" class="mr-2 logo-img">
+                <span class="logo-text">Instagram</span>
+            </a>
+            <a href="https://codeforces.com/profile/Developy" class="d-flex align-items-center logo-link">
+                <img src="{% static 'img/ico/codeforces.png' %}" alt="CodeForces" class="mr-2 logo-img">
+                <span class="logo-text">CodeForces</span>
+            </a>
+        </div>
+    </div>
+</footer>

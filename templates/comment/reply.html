@@ -1,10 +1,68 @@
+<!-- 载入静态文件 -->
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <title></title>
 </head>
+
 <body>
-$END$
+<form
+        action="."
+        method="POST"
+        id="reply_form"
+>
+    {% csrf_token %}
+    <div class="form-group">
+        <div id="test">
+            {{ comment_form.media }}
+            {{ comment_form.body }}
+        </div>
+    </div>
+</form>
+<!-- 提交按钮 -->
+<button onclick="confirm_submit({{ article_id }}, {{ parent_comment_id }})" class="btn btn-primary">发送</button>
+
+<script src="{% static 'jquery/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'popper/popper-1.14.4.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 仅使用 CKEditor 4 -->
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<!-- csrf token -->
+<script src="{% static 'csrf.js' %}"></script>
+
+<script>
+    $(function () {
+        // 初始化 CKEditor
+        CKEDITOR.replace('id_body');
+        $(".django-ckeditor-widget").removeAttr('style');
+    });
+
+    function confirm_submit(article_id, comment_id) {
+        // 检查 CKEditor 实例是否存在
+        if (CKEDITOR.instances['id_body']) {
+            // 从 CKEditor 中获取值
+            let content = CKEDITOR.instances['id_body'].getData();
+            // 调用 AJAX 与后端交换数据
+            $.ajax({
+                url: '/comment/post-comment/' + article_id + '/' + comment_id,
+                type: 'POST',
+                data: {body: content},
+                // 成功回调
+                success: function (e) {
+                    if (e === '200 OK') {
+                        parent.location.reload();
+                    }
+                }
+            });
+        } else {
+            console.error('CKEditor instance is not defined');
+        }
+    }
+</script>
+
 </body>
 </html>

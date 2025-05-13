@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% load static %}
+{% block title %} 用户信息 {% endblock title %}
+{% block content %}
+    <style>
+        body {
+            background-image: url("{% static '90.jpg' %}");
+        }
+
+        .profile-container {
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="profile-container text-center">
+                    <h2 class="profile-header">个人信息</h2>
+                    <div class="profile-item">
+                        <span class="font-weight-bold">用户名: </span>
+                        <span>{{ user.username }}</span>
+                    </div>
+                    {% if profile.avatar %}
+                        <div class="profile-item">
+                            <div class="avatar-label">头像</div>
+                            <img src="{{ profile.avatar.url }}" class="avatar-img" alt="Avatar">
+                        </div>
+                    {% else %}
+                        <div class="profile-item">
+                            <h5>暂无头像</h5>
+                        </div>
+                    {% endif %}
+                    <form method="post" action="." enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group col-md-6 mx-auto profile-item">
+                            <label for="avatar">上传头像</label>
+                            <input type="file" class="form-control-file" name="avatar" id="avatar">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto profile-item">
+                            <label for="phone">电话</label>
+                            <input type="text" class="form-control" id="phone" name="phone" value="{{ profile.phone }}">
+                        </div>
+                        <div class="form-group col-md-6 mx-auto profile-item">
+                            <label for="bio">简介</label>
+                            <textarea class="form-control" id="bio" name="bio" rows="6">{{ profile.bio }}</textarea>
+                        </div>
+                        <div class="form-group col-md-6 mx-auto profile-item">
+                            <button type="submit" class="btn btn-primary btn-block">提交</button>
+                            <button type="button" class="btn btn-primary1 btn-block mt-2" onclick="user_delete()">注销
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function user_delete() {
+            if (confirm("请确认要注销账户吗？")) {
+                layer.open({
+                    title: "您正在进行删除操作❌",
+                    content: "请再次确认删除用户资料吗？",
+                    yes: function (index, layero) {
+                        $('form#user_delete button').click();
+                        layer.close(index);
+                    },
+                })
+            }
+        }
+    </script>
+
+{% endblock content %}
+{% if user.is_authenticated %}
+    <form
+            style="display:none;"
+            id="user_delete"
+            action="{% url 'userprofile:delete' user.id %}"
+            method="POST"
+    >
+        {% csrf_token %}
+        <button type="submit">注销</button>
+    </form>
+    <script>
+        function user_delete() {
+            // 调用layer弹窗组件
+            layer.open({
+                title: "確かですか？",
+                content: "请再次确认删除用户资料吗？",
+                yes: function (index, layero) {
+                    $('form#user_delete button').click();
+                    layer.close(index);
+                },
+            })
+        }
+    </script>
+{% endif %}

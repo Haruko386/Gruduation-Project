@@ -1,0 +1,59 @@
+.link-container {
+    display: flex;
+    left: 0;
+    right: 0;
+}
+
+.link-category {
+    position: relative;
+    cursor: pointer;
+    margin-right: 80px;
+    margin-left: 80px;
+    padding-bottom: 5px;
+    margin-bottom: 100px;
+}
+
+.link-list {
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    list-style-type: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    z-index: 1;
+}
+
+.link-list.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.link-item {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 3px 0;
+}
+
+.link-item:hover {
+    background-color: #eee;
+}
+
+.navbar {
+    /* 样式设置可以根据您的具体需求调整 */
+    background-color: #333; /* 导航栏背景色 */
+    color: white; /* 导航栏文字颜色 */
+    padding: 10px 0; /* 导航栏上下内边距 */
+    text-align: center; /* 文字居中 */
+    position: fixed; /* 固定在顶部 */
+    top: 0; /* 距离顶部位置 */
+    width: 100%; /* 宽度占满整个屏幕 */
+}
+
+.texts{
+    color: white;
+}
+

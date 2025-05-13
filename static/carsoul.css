@@ -1,0 +1,153 @@
+.carousel-container {
+    position: relative;
+    width: 45%; /* 或具体宽度，根据需要调整 */
+    margin: 50px auto; /* 上下外边距50px，水平居中 */
+    overflow: hidden;
+    border-radius: 15px; /* 圆角大小 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 可选阴影效果 */
+    left: 10px;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 平滑过渡效果 */
+}
+
+.slide {
+    width: 100%;
+    position: relative;
+    flex-shrink: 0; /* 防止图片收缩 */
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit; /* 使图片继承容器的圆角 */
+}
+
+.carousel-indicators {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #333;
+}
+
+/* 添加分割线样式 */
+.divider {
+    height: 2px; /* 分割线高度 */
+    background-color: #ccc; /* 分割线颜色 */
+    margin-top: 10px; /* 与轮播图底部的距离 */
+    width: 100%; /* 分割线宽度，占满容器 */
+}
+
+.header_news {
+    color: #0c5460;
+    position: fixed;
+    border: 1px solid black;
+    background: #0c5460;
+}
+
+.containers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide.active {
+    display: block;
+}
+
+.carousel-indicators {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #333;
+}
+
+.side-features {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 30px;
+
+}
+
+.feature {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 20px; /* 圆角大小 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 可选阴影效果 */
+}
+
+.time-animate {
+    transition: transform 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.video-container {
+    max-width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,61 @@
+#registrationForm{
+    background: #ffffff00;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    align-content: center;
+    justify-items: center;
+    align-self: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    margin: auto;
+}
+.form-register {
+    background: rgba(255, 255, 255, 0);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-register .form-group {
+    margin: auto;
+    top:0;
+    margin-bottom: 15px;
+}
+
+.form-register .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-register .form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.form-register .error-message {
+    display: none; /* 初始隐藏错误信息 */
+    font-size: 12px;
+    color: red;
+}
+
+/* 当有错误时显示错误信息 */
+.form-register .form-group.has-error .error-message {
+    display: block;
+}
+
+/* 提交按钮样式 */
+.form-register .btn-block {
+    display: block;
+    width: 100%;
+}

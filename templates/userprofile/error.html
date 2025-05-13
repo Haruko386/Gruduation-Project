@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %} {% load static %}
+{% block title %} Error {% endblock title %}
+{% block content %}
+    <style>
+        .square{
+            top: 200px;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <div class="square">
+        <h1 align="center">404 - 页面找不到了</h1>
+        <p class="message" align="center">看起来您访问的页面不存在，可能是输入有误或其它原因，请您纠正🙁</p>
+        <p align="center">您将在 <span id="countdown" class="countdown">5</span> 秒后自动返回上一页。</p>
+    </div>
+
+    <script>
+        // 设置倒计时和自动返回功能
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        function updateCountdown() {
+            countdown--;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                // 倒计时结束，返回上一页
+                history.back();
+            } else {
+                setTimeout(updateCountdown, 1000); // 每秒更新一次
+            }
+        }
+
+        // 启动倒计时
+        updateCountdown();
+    </script>
+{% endblock content %}

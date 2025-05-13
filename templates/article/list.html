@@ -1,10 +1,492 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<img src="https://i0.hdslb.com/bfs/space/c467024d2cbeecb03af3acbabb7d41f2f7d4a5ff.png@2560w_400h_100q_1o.webp" class="banners">
+{% extends "base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    Title
+{% endblock title %}
+
+{% block content %}
+    <style>
+        .body {
+            background-color: #2D93CA;
+        }
+
+        .item-box {
+
+        }
+
+        .end-banner-container {
+            flex: 1;
+        }
+
+        /* 自定义样式，可能需要根据你的base.html中的样式进行调整 */
+        .containers {
+            display: flex;
+            flex-direction: row;
+            margin: auto;
+            background-color: white;
+            border-radius: 40px;
+        }
+
+        .carousel-container {
+            flex: 1;
+            /* 其他轮播图样式 */
+        }
+
+        .article-list-container {
+            flex: 1; /* 假设我们想要文章列表占据更多空间 */
+            margin-left: 20px; /* 左侧与轮播图之间的间距 */
+            right: 0;
+            max-height: 400px;
+            overflow: auto;
+            position: relative;
+            /* 其他文章列表样式 */
+        }
+
+        .article-item {
+            /* 单个文章条目的样式 */
+        }
+
+        .article-image {
+            width: 100px; /* 假设的图片宽度 */
+            height: auto;
+            float: left; /* 假设图片浮动在左侧 */
+            margin-right: 10px; /* 图片与文字之间的间距 */
+        }
+
+        .gray-box {
+            background-color: #f0f0f0; /* 灰色背景 */
+            padding: 20px; /* 内部间距 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            /* 其他样式，如宽度、高度、边距等 */
+            background-image: url("{% static 'img/background.png' %}");
+        }
+
+        .containers-img {
+            display: flex;
+            justify-content: space-between; /* 如果需要图片之间有间隔 */
+            align-items: center; /* 垂直居中对齐，如果图片大小不一致可能需要调整 */
+            width: 85%;
+            margin: auto;
+        }
+
+        .image-container {
+            /* 根据需要设置图片容器的样式，比如宽度、高度、边距等 */
+            /* 如果图片大小相同，可以省略宽度和高度设置 */
+            flex: 1; /* 如果想要图片等宽排列 */
+            margin: 5px; /* 设置图片之间的间距 */
+            text-align: center; /* 确保图片在容器中居中显示（特别是如果容器宽度大于图片时）*/
+            border-radius: 40px;
+        }
+
+        .image-container img {
+            /* 设置图片的样式，比如最大宽度、高度等 */
+            max-width: 100%; /* 保证图片不会超出容器宽度 */
+            height: auto; /* 自动调整高度以保持图片比例 */
+        }
+
+        .article-list-containers {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow: auto;
+            max-height: 570px;
+        }
+
+        .article-items {
+            flex: 0 0 calc(33.33% - 10px);
+            margin-right: 10px;
+            border-right: 1px solid #ccc;
+            padding: 0 10px;
+            max-height: 719px;
+        }
+
+        .article-items:last-child {
+            margin-right: 0;
+            border-right: none;
+        }
+
+        .box01 {
+            margin: auto;
+            max-width: 84%;
+        }
+
+        .box02 {
+            margin: auto;
+        }
+
+        .box03 {
+            background-color: white;
+            margin: auto;
+            max-width: 75%;
+            border-radius: 20px;
+        }
+
+        .info-box {
+            position: fixed;
+            top: 145px; /* 距离顶部的距离 */
+            right: 20px; /* 距离右侧的距离 */
+            background-color: #f0f0f0; /* 背景色 */
+            border: 1px solid #ccc; /* 边框 */
+            padding: 10px;
+            border-radius: 20px;
+            width: 160px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .end-banner {
+            max-width: 85%;
+            max-height: 135px;
+        }
+
+        .header_news {
+            height: 50px;
+            margin-top: 20px;
+            background-color: white;
+            border: unset;
+            border-bottom: 1px solid #eeeeee;
+            position: sticky;
+            top: 0; /* 固定在页面顶部 */
+        }
+
+    </style>
+    <script>
+        window.addEventListener('scroll', function () {
+            var infoBox = document.getElementById('infoBox');
+            var distanceFromTop = infoBox.getBoundingClientRect().top + window.scrollY;
+            var opacity = infoBox.getAttribute(opacity);
+
+            var windowHeight = window.innerHeight;
+
+            // 计算可见部分的高度
+            var visibleHeight = windowHeight - distanceFromTop;
+            console.log(visibleHeight)
+            // 根据可见高度设置透明度
+            if (visibleHeight > 405) {
+                opacity = 0;
+            } else opacity = 1;
+
+            // 设置透明度
+            infoBox.style.opacity = opacity;
+        });
+        // 获取IP地址
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-address').innerText = data.ip;
+                // 使用第三方API获取IP所在位置，这里使用了ipapi.co的API
+                fetch(`https://ipapi.co/${data.ip}/json/`)
+                    .then(response => response.json())
+                    .then(locationData => {
+                        document.getElementById('location').innerText = `${locationData.city}, ${locationData.region}, ${locationData.country}`;
+                        // 获取位置的天气信息
+                        const apiKey = 'SyHeI4iWMkMRSBac1';
+                        const city = locationData.city;
+                        console.log(city)
+                        const apiUrl = `https://api.seniverse.com/v3/weather/now.json?key=SyHeI4iWMkMRSBac1&location=${city}&language=zh-Hans&unit=c`;
+                        console.log(apiUrl)
+                        fetch(apiUrl)
+                            .then(response => response.json())
+                            .then(weatherData => {
+                                console.log(weatherData, 'haruka')
+                                const weather = weatherData.results[0].now.text
+                                document.getElementById('weather').innerText = `当前天气${weather}`;
+                            })
+                            .catch(error => console.error('获取天气信息失败：', error));
+                    })
+                    .catch(error => console.error('获取位置信息失败：', error));
+            })
+            .catch(error => console.error('获取IP地址失败：', error));
+        // 每秒更新一次浏览器信息
+        setInterval(updatePerformanceInfo, 1000);
+    </script>
+    <div class="info-box" id="infoBox">
+        <h4 align="center">小站资讯📠</h4>
+        <div class="clock ml-auto">
+            <h3 align="center" class="clocks">🕧</h3>
+            <p id="current-time" class="time-animate clocks" align="center">加载中……</p>
+        </div>
+        <p align="center">IP地址🕸️<span id="ip-address"></span></p>
+        <p align="center">所在位置🌎<span id="location"></span></p>
+        <div class="clocks hitokoto">
+            <p align="center">Hitokoto💬</p>
+            <p id="hitokoto" class="hitokoto" align="center">加载中……</p>
+        </div>
+        <div id="weather" align="center">天气加载中...</div>
+    </div>
+    <div class="gray-box">
+        <div class="box03">
+            <div class="box02" id="box02">
+                <h3 align="center"><a target="_blank" title="全国助残日，走进习近平总书记心中这份“春天的事业”"
+                                      href="/news/show-85024.html">全国助残日，走进习近平总书记心中这份“春天的事业”</a>
+                </h3>
+                <p align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;习近平总书记指出：“残疾人是一个特殊困难的群体，需要格外关心、格外关注。”一幕幕温情瞬间，凝结着习近平总书记对残疾人数十年不变的深情。</p>
+            </div>
+            <div class="divider"></div>
+            <div class="container">
+                <div class="containers">
+                    <div class="carousel-container">
+                        <div class="carousel-slides">
+                            <!-- 轮播图的图片和链接 -->
+                            <div class="slide active" id="slide1">
+                                <a href="#">
+                                    <img src="{% static 'img/carousel/slide1.jpg' %}" alt="Slide 1">
+                                </a>
+                            </div>
+                            <div class="slide active" id="slide2">
+                                <a href="#">
+                                    <img src="{% static 'img/carousel/slide2.jpg' %}" alt="Slide 2">
+                                </a>
+                            </div>
+                            <div class="slide active" id="slide3">
+                                <a href="#">
+                                    <img src="{% static 'img/carousel/slide3.jpg' %}" alt="Slide 3">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="article-list-container">
+                        <div class="item-box">
+                            <h2 class="header_news" align="center">应急要闻</h2>
+                            <hr>
+                            {% for article in articles %}
+                                {% if article.column_id and article.column_id == 1 %}
+                                    <div class="article-item">
+                                        <h5><a href="{% url 'article:article_detail' article.id %}"
+                                               style="color: black;">{{ article.title }}</a></h5>
+                                        <p align="center">{{ article.content|slice:'68' }}</p>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <hr>
+            <div class="box01"><a href="https://www.mem.gov.cn/xw/ztzl/xxzl/" target="_blank">
+                <img src="https://mempe.org.cn/templates/chinasafety5.0/images/topbanner.jpg"></a>
+            </div>
+            {#  记得加json文件  #}
+            <div class="containers-img">
+                <div class="image-container" id="slide11">
+                    <a href="#">
+                        <img src="{% static 'img/mid-banner/silde1.jpg' %}" alt="Slide 1">
+                    </a>
+                </div>
+                <div class="image-container" id="slide22">
+                    <a href="#">
+                        <img src="{% static 'img/mid-banner/slide2.jpg' %}" alt="Slide 2">
+                    </a>
+                </div>
+                <div class="image-container" id="slide33">
+                    <a href="#">
+                        <img src="{% static 'img/mid-banner/slide3.jpg' %}" alt="Slide 3">
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+            <div class="containers">
+                <div class="article-list-container">
+                    <h2 class="header_news" align="center">宣教中心</h2>
+                    <hr>
+                    {% for article in articles %}
+                        {% if article.column_id and article.column_id == 7 %}
+                            <div class="article-item">
+                                <h5><a href="{% url 'article:article_detail' article.id %}"
+                                       style="color: black;">{{ article.title }}</a></h5>
+                                <p align="center">{{ article.content|slice:'68' }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="end-banner-container">
+                    <div class="image-container end-banner" id="slide111">
+                        <a href="#">
+                            <img src="{% static 'img/end-banner/slide1.jpg' %}" alt="Slide 1" class="end-banner">
+                        </a>
+                    </div>
+                    <div class="image-container end-banner" id="slide222">
+                        <a href="#">
+                            <img src="{% static 'img/end-banner/slide2.jpg' %}" alt="Slide 1" class="end-banner">
+                        </a>
+                    </div>
+                    <div class="image-container end-banner" id="slide333">
+                        <a href="#">
+                            <img src="{% static 'img/end-banner/slide3.jpg' %}" alt="Slide 1" class="end-banner">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+            <div class="container">
+                <div class="article-list-containers">
+                    <div class="article-items">
+                        <h2 class="header_news" align="center">时政专栏</h2>
+                        <hr>
+                        {% for article in articles %}
+                            {% if article.column_id == 4 %}
+                                <h5 align="center"><a href="{% url 'article:article_detail' article.id %}"
+                                                      style="color: black;"
+                                >
+                                    {{ article.title }}
+                                </a></h5>
+                                <p align="center">{{ article.content|slice:'68' }}</p> <!-- 假设article对象有summary字段 -->
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="article-items">
+                        <h2 class="header_news" align="center">通知公告</h2>
+                        <hr>
+                        {% for article in articles %}
+                            {% if article.column_id == 5 %}
+                                <h5 align="center"><a href="{% url 'article:article_detail' article.id %}"
+                                                      style="color: black;"
+                                >
+                                    {{ article.title }}
+                                </a></h5>
+                                <p align="center">{{ article.content|slice:'68' }}</p> <!-- 假设article对象有summary字段 -->
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="article-items">
+                        <h2 class="header_news" align="center">政策解读</h2>
+                        <hr>
+                        {% for article in articles %}
+                            {% if article.column_id == 6 %}
+                                <h5 align="center"><a href="{% url 'article:article_detail' article.id %}"
+                                                      style="color: black;"
+                                >
+                                    {{ article.title }}
+                                </a></h5>
+                                <p align="center">{{ article.content|slice:'68' }}</p> <!-- 假设article对象有summary字段 -->
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <hr>
+    <script>
+        fetch('https://mempe.org.cn/')
+            .then(response => response.text()) // 将响应转换为纯文本
+            .then(html => {
+                // 创建一个临时 div 元素用于容纳网页的内容
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+
+                // 通过选择器找到指定的内容
+                const boxContent = tempDiv.querySelector('.box02');
+                const title = boxContent.querySelector('h3 a').innerText;
+                const paragraph = boxContent.querySelector('p').innerText;
+
+                // 将获取的标题和段落内容写入到你的网页中
+                const contentDiv = document.getElementById('box02');
+                contentDiv.innerHTML = `<h3 align="center">${title}</h3><p align="center">${paragraph}</p>`;
+                console.log("gfubonaebfa")
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+            });
+
+        function toggleLinks(category) {
+            var linkList = category.querySelector('.link-list');
+            linkList.classList.toggle('show');
+        }
+
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let slideInterval; // 用于存储定时器的引用
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-slides').style.transform = `translateX(${offset}%)`;
+        }
+
+        // 初始化第一张幻灯片并启动自动播放
+        updateSlide();
+        startAutoSlide(); // 新增函数调用
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000); // 每5秒切换一次
+        }
+
+
+        function updateTime() {
+            let now = new Date();
+            let dateTimeString = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
+            document.getElementById('current-time').classList.remove('time-animate');
+            // 更新时间
+            document.getElementById('current-time').innerText = dateTimeString;
+            // 稍作延迟后重新添加动画类，确保动画可见
+            setTimeout(() => {
+                document.getElementById('current-time').classList.add('time-animate');
+            }, 10);
+        }
+
+        // 初始化时间显示并开始循环更新
+        setInterval(updateTime, 1000);
+
+
+        const hitokotoapi = 'https://v1.hitokoto.cn/';
+
+        fetch(hitokotoapi)
+            .then(response => response.json())
+            .then(data => {
+                // 更新名言内容
+                document.getElementById('hitokoto').innerText = data.hitokoto;
+                console.log("succeed")
+            })
+            .catch(error => console.error('Error:', error));
+
+        fetch("{% static 'img/end-banner/link.json' %}")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#slide111 a').href = data.slide1;
+                document.querySelector('#slide222 a').href = data.slide2;
+                document.querySelector('#slide333 a').href = data.slide3;
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+
+
+        fetch("{% static 'img/mid-banner/link.json' %}")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#slide11 a').href = data.slide1;
+                document.querySelector('#slide22 a').href = data.slide2;
+                document.querySelector('#slide33 a').href = data.slide3;
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+
+        fetch("{% static 'carousel.json' %}")
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#slide1 a').href = data.slide1;
+                document.querySelector('#slide2 a').href = data.slide2;
+                document.querySelector('#slide3 a').href = data.slide3;
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
+{% endblock content %}

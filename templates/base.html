@@ -1,7 +1,4 @@
-<!--
-    载入静态文件
-    使用 Django 3 学习的读者改为
--->
+<!-- 载入静态文件 -->
 {% load static %}
 
 <!DOCTYPE html>
@@ -11,31 +8,124 @@
 <head>
     <!-- 网站采用的字符编码 -->
     <meta charset="utf-8">
-    <!-- 预留网站标题的位置 -->
-    <title>{% block title %}{% endblock %}</title>
+    <!-- 网站标题 -->
+    <title>应急知识宣传系统</title>
     <!-- 引入bootstrap的css文件 -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- 引入monikai.css -->
+    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
+    <link rel="icon" href="{% static 'Untiled Goose Game.ico' %}">
+    <link rel="stylesheet" href={% static 'edit.css' %}>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <link rel="stylesheet" href="{% static 'carsoul.css' %}">
+    <link rel="stylesheet" href="{% static 'float_button.css' %}">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css"
+    >
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css"
+    >
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .back-to-top {
+            position: fixed; /* 固定位置 */
+            bottom: 60px; /* 距离底部的距离 */
+            right: 20px; /* 距离右侧的距离 */
+            z-index: 99; /* 确保按钮在最上层 */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.7;
+            visibility: hidden; /* 默认隐藏，当滚动时显示 */
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+        }
+
+        /* 当页面滚动到一定距离时显示按钮 */
+        body.scroll-active .back-to-top {
+            visibility: visible;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%;
+            margin-bottom: -40px;
+        }
+
+        #footer,
+        #push {
+            height: 60px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 引入导航栏 -->
-    {% include 'header.html' %}
-    <!-- 预留具体页面的位置 -->
+
+<!-- 引入导航栏 -->
+{% include 'header.html' %}
+<!-- 预留具体页面的位置 -->
+<div id="wrapper" class="wrapper">
     {% block content %}{% endblock content %}
-    <!-- 引入注脚 -->
-    {% include 'footer.html' %}
-    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
-    <script src="{% static 'jquery/jquery-3.7.1.js' %}"></script>
+    <div id="push"></div>
+</div>
+<button id="backToTopBtn" class="back-to-top" title="返回顶部" onclick="scrollToTop()">
+    <i class="fa fa-chevron-up"></i> <!-- 使用Font Awesome图标或其他图标库 -->
+</button>
+<!-- 引入注脚 -->
+{% include 'footer.html' %}
 
-    <!--
-        popper.js 采用 cdn 远程引入，意思是你不需要把它下载到本地。
-        在实际的开发中推荐静态文件尽量都使用 cdn 的形式。
-        教程采用本地引入是为了让读者了解静态文件本地部署的流程。
-    -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1-lts/dist/umd/popper.min.js"></script>
+<!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
+<script src="{% static 'jquery/jquery-3.3.1.js' %}"></script>
 
-    <!-- 引入bootstrap的js文件 -->
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- 2020.07.22: popper.js 更新为远程调用的形式 -->
+{#<script src="{% static 'popper/popper-1.14.4.js' %}"></script>#}
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1-lts/dist/umd/popper.min.js"></script>
+
+<!-- 引入bootstrap的js文件 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 引入layer.js -->
+<script src="{% static 'layer/layer.js' %}"></script>
+
+{% block script %}{% endblock script %}
+
+
+<style>
+
+</style>
+
+<script>
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滚动效果
+        });
+    }
+
+    // 监听滚动事件，当用户滚动时改变按钮的可见性
+    window.addEventListener('scroll', function () {
+        document.body.classList.toggle('scroll-active', window.scrollY > 200);
+    });
+</script>
+
 </body>
 
 </html>

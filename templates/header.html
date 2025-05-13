@@ -1,0 +1,128 @@
+{% load static %}
+<style>
+    .avatar-thumb {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+    }
+
+    .navbar-white {
+        color: #ffffff;
+    }
+
+    .imgs {
+        width: 90px;
+        height: 90px;
+    }
+
+    .clocks {
+        color: black;
+    }
+    .icon {
+        max-height: 40px;
+        max-width: 40px;
+    }
+    .banners {
+        max-height: 25%;
+    }
+    .navbar-nav .nav-item {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<!-- 定义导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+
+        <!-- 导航栏商标 -->
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'article:article_list' %}">
+            <img src="{% static 'img/ico/steam.png' %}" alt="商标" class="mr-2 logo-img">
+            应急管理宣传系统
+        </a>
+
+        <!-- 导航入口 -->
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <!-- 条目 -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'article:article_list' %}">主页💾</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        新闻📰
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="newsDropdown">
+                        <a class="dropdown-item" href="{% url 'article:search_articles' %}?tag=应急要闻">应急要闻</a>
+                        <a class="dropdown-item" href="{% url 'article:search_articles' %}?tag=时政专栏">时政专栏</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'article:search_articles' %}?tag=媒体信息">媒体信息</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="opennessDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        公开🗃️
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="opennessDropdown">
+                        <a class="dropdown-item" href="{% url 'article:search_articles' %}?tag=通知公告">通知公告</a>
+                        <a class="dropdown-item" href="{% url 'article:search_articles' %}?tag=政策解读">政策解读</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'article:search_articles' %}">应急科普📚︎</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">|</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0" action="{% url 'article:search_articles' %}">
+                        <input type="text" class="form-control mr-sm-2" name="search" placeholder="搜索文章..." required>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">|</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown d-flex align-items-center">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% if user.profile.avatar %}
+                                <img src="{{ user.profile.avatar.url }}" class="avatar-img avatar-thumb mr-2"
+                                     alt="User Avatar">
+                                {{ user.username }}
+                            {% else %}
+                                <!-- 如果用户未登录，可以显示默认的占位符或者提示 -->
+                                <i class="fas fa-user-circle mr-2"></i> {{ user.username }}
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>编辑资料</a>
+                            <a class="dropdown-item" href="{% url 'article:article_create' %}">写文章</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href='{% url "userprofile:logout" %}'>退出登录</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'userprofile:login' %}">登录</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% if user.is_authenticated %}
+    <form
+        style="display:none;"
+        id="user_delete"
+        action="{% url 'userprofile:delete' user.id %}"
+        method="POST"
+    >
+        {% csrf_token %}
+        <button type="submit">发送</button>
+    </form>
+{% endif %}

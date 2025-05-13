@@ -1,33 +1,284 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="20bcbb17-c4fd-4c1b-a322-485bda123d3f" name="Changes" comment="" />
+    <list default="true" id="20bcbb17-c4fd-4c1b-a322-485bda123d3f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/my_blog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1st.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0002_alter_article_title.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0003_article_total_views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0004_article_avatar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0005_remove_article_avatar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0006_articlecolumn_article_column.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0007_article_tags.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0008_article_avatar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/0009_alter_article_avatar.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240424/35e3a2695692f89ed026024eb046130.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240427/四锁五门封面.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240515/109951168306165427.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240515/668156cfcafceb8b88ff8b421f8a033.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240515/668156cfcafceb8b88ff8b421f8a033_iwMIuMP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240515/668156cfcafceb8b88ff8b421f8a033_oC7R2Ob.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240515/80979ba75414e7e455216005dffe846.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240516/109951168306165427.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240516/1954ec87b49dbf253d7f5008652c540.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240516/Kt6zk.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240516/about.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240516/胜利.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240517/0970ecbf9c94a3867d047418ad10587.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240518/3b65b164cf778edbdbb6972b28531dd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatar/20240518/93198d482a652758de137218fd091ec.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/1634015814855.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/1634352861083.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/1954ec87b49dbf253d7f5008652c540.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/77decb2d36ca3be09674a01c915a3e6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/77decb2d36ca3be09674a01c915a3e6_LDlRJ1k.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/77decb2d36ca3be09674a01c915a3e6_XfFE0j8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/77decb2d36ca3be09674a01c915a3e6_jtsKfB0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/77decb2d36ca3be09674a01c915a3e6_trekby6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/ac073a5b4ea9e4ec203465fbb06e9c6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/c041cb5f92b08b20322d025a12634bf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240519/leetcode.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240531/20240530152951_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240531/67.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240531/W020231115292939315850.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/avatars/20240531/下一个五门视频的封面.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_blog/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_blog/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_blog/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_blog/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/my_blog/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/67.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/78.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/90.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/Lemm.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/Untiled Goose Game.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/carsoul.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/Creating and Editing Code Snippets.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/Installation Guide.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/ckeditor/ckeditor/plugins/prism/plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/code.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/csrf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/edit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/float_button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/about.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/archive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/carousel/slide1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/carousel/slide2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/carousel/slide3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/category.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/end-banner/slide1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/end-banner/slide2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/fav.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/codeforces.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/instgram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/steam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/博客.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/哔哩哔哩.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/ico/鹅.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/link.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/mid-banner/link.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/mid-banner/silde1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/mid-banner/slide2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/mid-banner/slide3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/videos/link.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/img/xiaohui.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/jquery/jquery-3.3.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/link.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/md_css/monokai.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/popper/popper-1.14.4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/prism/prism.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/spring.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/spring.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/sticky_sidebar/carsoul.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/sticky_sidebar/jquery.sticky-sidebar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/comment/reply.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/userprofile/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/userprofile/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/userprofile/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/userprofile/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/userprofile/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2dhesln3Ws6mxDhg5Kt8YwunIJA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.my_blog.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/2/my_blog&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\2\my_blog\templates" />
+      <recent name="D:\2\my_blog\static" />
+      <recent name="D:\2\my_blog" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2\my_blog\static" />
+      <recent name="D:\2\my_blog\templates\article" />
+      <recent name="D:\2\my_blog\templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="my_blog" type="Python.DjangoServer" factoryName="Django server">
+      <module name="my_blog" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="my_blog.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="localhost" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -43,8 +294,111 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710464945955</updated>
-      <workItem from="1710464991254" duration="1000" />
+      <workItem from="1710464991254" duration="6603000" />
+      <workItem from="1710550570209" duration="4908000" />
+      <workItem from="1710665576704" duration="28000" />
+      <workItem from="1710853649677" duration="1602000" />
+      <workItem from="1710937800731" duration="192000" />
+      <workItem from="1711246772700" duration="86000" />
+      <workItem from="1712297966499" duration="31000" />
+      <workItem from="1712298513475" duration="352000" />
+      <workItem from="1712448920387" duration="626000" />
+      <workItem from="1712453866913" duration="239000" />
+      <workItem from="1712662329420" duration="27000" />
+      <workItem from="1713857106247" duration="256000" />
+      <workItem from="1713857417532" duration="2054000" />
+      <workItem from="1713859823310" duration="255000" />
+      <workItem from="1713860092684" duration="14000" />
+      <workItem from="1713860118501" duration="755000" />
+      <workItem from="1713862929725" duration="169000" />
+      <workItem from="1713919929852" duration="1408000" />
+      <workItem from="1713921466102" duration="97000" />
+      <workItem from="1713924472883" duration="2783000" />
+      <workItem from="1713927674159" duration="37000" />
+      <workItem from="1713927775409" duration="811000" />
+      <workItem from="1713942116871" duration="2406000" />
+      <workItem from="1714115271801" duration="2562000" />
+      <workItem from="1714200699510" duration="6158000" />
+      <workItem from="1714730206520" duration="76000" />
+      <workItem from="1714730393619" duration="43000" />
+      <workItem from="1714876274058" duration="103000" />
+      <workItem from="1715164509150" duration="903000" />
+      <workItem from="1715165986963" duration="685000" />
+      <workItem from="1715216704166" duration="1157000" />
+      <workItem from="1715219292281" duration="851000" />
+      <workItem from="1715305536599" duration="622000" />
+      <workItem from="1715306458497" duration="1450000" />
+      <workItem from="1715308254348" duration="572000" />
+      <workItem from="1715310980450" duration="729000" />
+      <workItem from="1715325753050" duration="577000" />
+      <workItem from="1715326373546" duration="523000" />
+      <workItem from="1715327377618" duration="1617000" />
+      <workItem from="1715742499754" duration="1429000" />
+      <workItem from="1715754625470" duration="10969000" />
+      <workItem from="1715770860755" duration="829000" />
+      <workItem from="1715772720041" duration="521000" />
+      <workItem from="1715820478074" duration="10075000" />
+      <workItem from="1715841732359" duration="9959000" />
+      <workItem from="1715851996573" duration="203000" />
+      <workItem from="1715852286473" duration="52000" />
+      <workItem from="1715857123608" duration="4160000" />
+      <workItem from="1715909383474" duration="1896000" />
+      <workItem from="1715911299713" duration="156000" />
+      <workItem from="1715911528006" duration="275000" />
+      <workItem from="1715911837080" duration="3202000" />
+      <workItem from="1715942111795" duration="7736000" />
+      <workItem from="1715989368798" duration="8020000" />
+      <workItem from="1715997770155" duration="1768000" />
+      <workItem from="1716000451878" duration="290000" />
+      <workItem from="1716015789099" duration="5087000" />
+      <workItem from="1716027074096" duration="201000" />
+      <workItem from="1716029802828" duration="163000" />
+      <workItem from="1716086407794" duration="444000" />
+      <workItem from="1716099659627" duration="8119000" />
+      <workItem from="1716116672943" duration="4351000" />
+      <workItem from="1716127003995" duration="1086000" />
+      <workItem from="1716167251000" duration="1830000" />
+      <workItem from="1716169099235" duration="154000" />
+      <workItem from="1716179709097" duration="16353000" />
+      <workItem from="1716202189157" duration="10009000" />
+      <workItem from="1716213048567" duration="1528000" />
+      <workItem from="1716256412577" duration="1547000" />
+      <workItem from="1716281123169" duration="2303000" />
+      <workItem from="1716285916300" duration="670000" />
+      <workItem from="1716295595904" duration="1638000" />
+      <workItem from="1716339964317" duration="8055000" />
+      <workItem from="1716348224040" duration="234000" />
+      <workItem from="1716360876447" duration="4053000" />
+      <workItem from="1716377748809" duration="345000" />
+      <workItem from="1716885891861" duration="773000" />
+      <workItem from="1717042959183" duration="37000" />
+      <workItem from="1717043044724" duration="213000" />
+      <workItem from="1717044613528" duration="243000" />
+      <workItem from="1717045120613" duration="1433000" />
+      <workItem from="1717137343774" duration="1730000" />
+      <workItem from="1717500424515" duration="301000" />
+      <workItem from="1717500742242" duration="1901000" />
+      <workItem from="1717639191159" duration="5001000" />
+      <workItem from="1717910780908" duration="2444000" />
+      <workItem from="1717914959493" duration="1572000" />
+      <workItem from="1717975574410" duration="837000" />
+      <workItem from="1718005303187" duration="567000" />
+      <workItem from="1718005940210" duration="652000" />
+      <workItem from="1718084665455" duration="836000" />
+      <workItem from="1718087480878" duration="6231000" />
+      <workItem from="1718272947163" duration="17000" />
+      <workItem from="1725285222825" duration="107000" />
+      <workItem from="1727492406866" duration="34000" />
+      <workItem from="1743472204053" duration="16000" />
+      <workItem from="1747106346361" duration="213000" />
+      <workItem from="1747108415789" duration="330000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

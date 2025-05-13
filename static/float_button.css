@@ -1,0 +1,64 @@
+.gallery {
+    display: flex;
+    justify-content: space-between; /* 保持两端对齐，自动在图片间添加空间 */
+    padding: 0 10px; /* 给gallery容器两侧添加外边距，间接增加图片间的距离 */
+}
+
+.item {
+    position: relative;
+    width: calc(20% - 20px); /* 减小每个item的宽度以缩小图片，同时考虑额外的间距 */
+    margin: 0 10px; /* 图片之间的直接间距 */
+}
+
+.caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    color: white;
+    padding: 5px 0; /* 上下内边距 */
+}
+
+img {
+    width: 100%; /* 保持图片宽度适应.item容器 */
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* 包含边框在宽度计算内 */
+}
+
+.item.expanded img {
+    transition: all 0.5s ease; /* 平滑过渡效果 */
+    transform: scale(2); /* 放大图片 */
+    z-index: 100; /* 确保图片位于最上层 */
+}
+
+/* 按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: none; /* 默认隐藏 */
+            z-index: 999;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 按钮悬停样式 */
+        .back-to-top:hover {
+            background-color: #0056b3;
+        }
+
+        /* 当页面滚动到一定距离时显示按钮 */
+        body.scroll-active .back-to-top {
+            visibility: visible;
+        }

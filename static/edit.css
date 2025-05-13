@@ -1,0 +1,108 @@
+.btn-primary1 {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary1:hover {
+        background-color: darkred;
+    }
+
+    .btn-primary1:active {
+        background-color: darkgrey;
+    }
+
+    .link-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .avatar-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .avatar-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover; /* 确保图片按比例缩放 */
+    }
+
+    .avatar-upload {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .avatar-upload .form-group {
+        width: 100%;
+    }
+
+    .avatar-upload label {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .avatar-upload input[type="file"] {
+        display: block;
+        width: 100%;
+    }
+
+    .avatar-upload .btn {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .profile-container {
+        background-color: rgba(249, 249, 249, 0);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        margin-bottom: 30px;
+    }
+
+    .profile-item {
+        margin-bottom: 20px;
+    }
+
+    .avatar-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ddd;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        border-radius: 5px;
+    }
+
+    .btn-primary1 {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary1:hover {
+        background-color: #c82333;
+    }

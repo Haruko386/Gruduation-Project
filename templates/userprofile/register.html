@@ -1,10 +1,172 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block title %} 注册 {% endblock title %}
+{% block content %}
+    <style>
+        body {
+            background-image: url("{% static '/90.jpg' %}");
+        }
+
+        .error-message {
+            color: red;
+        }
+
+
+        #registrationForm {
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+            align-content: center;
+            justify-items: center;
+            align-self: center;
+            align-items: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100px;
+            margin: auto;
+        }
+
+        .alert-custom {
+            margin-bottom: 20px;
+        }
+        .colors{
+            color: white;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row justify-content-center"> <!-- 居中内容 -->
+            <div class="col-12 col-md-8"> <!-- 限制表单宽度 -->
+                <!-- 显示错误消息 -->
+                {% if messages %}
+                <div class="alert alert-danger alert-custom" role="alert">
+                    <ul class="mb-0">
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <form method="post" action="." id="registrationForm" class="form-register">
+                    <h3 align="center" class="colors">请按顺序输入您的注册信息</h3>
+                    {% csrf_token %}
+                    <!-- 账号 -->
+                    <div class="form-group">
+                        <label for="username" class="colors">昵称</label>
+                        <input type="text" class="form-control" id="username" name="username" required placeholder="😉">
+                    </div>
+                    <!-- 邮箱 -->
+                    <div class="form-group">
+                        <label for="email" class="colors">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required
+                               placeholder="***@***.com">
+                        <span class="error-message text-danger" id="emailError"></span>
+                    </div>
+                    <!-- 密码 -->
+                    <div class="form-group">
+                        <label for="password" class="colors">设置密码</label>
+                        <input type="password" class="form-control" id="password" name="password" required
+                               placeholder="密码必须包含8-20位数字、字符、大小写字母混合">
+                        <span class="error-message text-danger" id="passwordError"></span>
+                    </div>
+                    <!-- 确认密码 -->
+                    <div class="form-group">
+                        <label for="password2" class="colors">确认密码</label>
+                        <input type="password" class="form-control" id="password2" name="password2" required
+                               placeholder="请保持两次输入的密码一致">
+                        <span class="error-message text-danger" id="password2Error"></span>
+                    </div>
+                    <!-- 提交按钮 -->
+                    <button type="submit" class="btn btn-primary btn-block">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+<script>
+    const form = document.getElementById('registrationForm');
+    const passwordInput = document.getElementById('password');
+    const password2Input = document.getElementById('password2');
+    const emailInput = document.getElementById('email');
+    const passwordError = document.getElementById('passwordError');
+    const emailError = document.getElementById('emailError');
+    const password2Error = document.getElementById('password2Error');
+
+    passwordInput.addEventListener('input', function () {
+        validatePasswordInput();
+        validatePasswordMatch();
+    });
+
+    password2Input.addEventListener('input', function () {
+        validatePasswordMatch();
+    });
+
+    emailInput.addEventListener('input', function () {
+        if (!validateEmail(emailInput.value)) {
+            emailError.textContent = '邮箱格式不正确';
+        } else {
+            emailError.textContent = '';
+        }
+    });
+
+    form.addEventListener('submit', function (event) {
+        let valid = true;
+
+        if (!validatePassword(passwordInput.value)) {
+            passwordError.textContent = '密码必须包含8-20位数字、字符、大小写字母混合';
+            valid = false;
+        }
+
+        if (passwordInput.value.length < 8 || passwordInput.value.length > 20) {
+            passwordError.textContent = '密码长度必须在8到20位之间';
+            valid = false;
+        }
+
+        if (passwordInput.value !== password2Input.value) {
+            password2Error.textContent = '两次输入的密码不一致';
+            valid = false;
+        }
+
+        if (!validateEmail(emailInput.value)) {
+            emailError.textContent = '邮箱格式不正确';
+            valid = false;
+        }
+
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+
+    function validatePassword(password) {
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+        return passwordRegex.test(password);
+    }
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validatePasswordInput() {
+        if (!validatePassword(passwordInput.value)) {
+            passwordError.textContent = '密码必须包含8-20位数字、字符、大小写字母混合';
+        } else if (passwordInput.value.length < 8 || passwordInput.value.length > 20) {
+            passwordError.textContent = '密码长度必须在8到20位之间';
+        } else {
+            passwordError.textContent = '';
+        }
+    }
+
+    function validatePasswordMatch() {
+        if (passwordInput.value !== password2Input.value) {
+            password2Error.textContent = '两次输入的密码不一致';
+        } else {
+            password2Error.textContent = '';
+        }
+    }
+</script>

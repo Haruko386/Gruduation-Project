@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    写文章
+{% endblock title %}
+{% block content %}
+    <style>
+        .body{
+            background-color: white;
+        }
+        .article-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: 20px;
+        }
+
+        .editor,
+        .preview {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .preview {
+            border-left: 1px solid #ccc;
+            background-color: #f8f8f8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow-y: auto;
+            max-height: 750px; /* 添加最大高度 */
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+        }
+
+        .preview-content {
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .preview-text {
+            color: #333;
+        }
+
+        .preview-text em {
+            font-style: italic;
+        }
+
+        .preview-text strong {
+            font-weight: bold;
+        }
+
+        .preview-text a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .preview-text a:hover {
+            text-decoration: underline;
+        }
+
+        .preview-animation {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .form-container {
+            /* 根据需要添加其他样式 */
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between; /* 如果需要元素之间有间隔 */
+            align-items: center; /* 垂直居中对齐 */
+        }
+
+        .form-group {
+            /* 可能需要调整margin或padding以适应新的布局 */
+            flex: 1; /* 如果希望元素等宽 */
+            margin-right: 10px; /* 可选，用于元素之间的间隔 */
+        }
+
+        /* 如果需要，可以为最后一个form-group添加特殊样式以移除右边距 */
+        .form-row .form-group:last-child {
+            margin-right: 0;
+        }
+    </style>
+    <div class="article-container">
+        <div class="preview" id="markdown-preview">
+            <div class="preview-content">
+                <p class="preview-text preview-animation">这里是实时预览区域。</p>
+                <p class="preview-text preview-animation">您可以在右侧编辑区域输入 Markdown
+                    代码，并在此处查看实时渲染结果。</p>
+                <p class="preview-text preview-animation">在此您可以畅所欲言</p>
+                <p class="preview-text preview-animation">祝您写作愉快😉</p>
+            </div>
+        </div>
+        <div class="editor">
+            <h2 align="center">文章书写</h2>
+            <p align="center">本文支持Markdown语法，点击<a href="https://markdown.com.cn/basic-syntax/">🔗</a>访问Markdown基本语法教程
+            </p>
+            <form method="post" action="." enctype="multipart/form-data" class="form-container">
+                {% csrf_token %}
+                <!-- 文章标题和栏目，使用form-row类 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">文章标题</label>
+                        <input type="text" class="form-control" id="title" name="title" required
+                               placeholder="在此输入您的标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="column">栏目</label>
+                        <select class="form-control" id="column" name="column">
+                            <option value="none">请选择栏目..</option>
+                            {% for column in columns %}
+                                <option value="{{ column.id }}">{{ column }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 文章标签和标题图，使用form-row类 -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tags">标签</label>
+                        <input type="text" class="form-control" id="tags" name="tags" placeholder="请用英文逗号对标签进行分割，如: a, b, c,">
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">标题图</label>
+                        <input type="file" class="form-control-file" name="avatar" id="avatar">
+                    </div>
+                </div>
+                <!-- 文章正文 -->
+                <div class="form-group">
+                    <label for="body">文章正文</label>
+                    <textarea class="form-control" id="body" name="content" rows="12" required
+                              placeholder="在此输入您的正文，支持Markdown" oninput="updatePreview()"></textarea>
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const markdownInput = document.getElementById('body');
+        const markdownPreview = document.getElementById('markdown-preview');
+
+        markdownInput.addEventListener('input', updatePreview);
+
+        function updatePreview() {
+            const markdownText = markdownInput.value;
+            markdownPreview.innerHTML = marked(markdownText);
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.1/marked.min.js"></script>
+{% endblock content %}

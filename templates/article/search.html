@@ -1,10 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<style>
+    .header_new {
+    }
+</style>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    查找
+{% endblock title %}
+{% block content %}
+    {% if articles %}
+        {% if tag %}
+            <h2 class="header_new" align="center">{{ tag }}</h2>
+        {% elif tag == Node %}
+            <h2 class="header_new" align="center">应急科普</h2>
+        {% else %}
+            <h2 class="header_new" align="center">应急科普</h2>
+        {% endif %}
+    {% else %}
+        <h2 align="center">暂无相关文章</h2>
+    {% endif %}
+    <div class="container">
+        {% if search %}
+            {% if articles %}
+                <h4><span style="color: red">"{{ search }}"</span>的搜索结果如下：</h4>
+                <hr>
+            {% else %}
+                <h4>暂无<span style="color: red">"{{ search }}"</span>有关的文章。</h4>
+                <hr>
+            {% endif %}
+        {% endif %}
+
+        <!-- 列表循环 -->
+        <div class="row mt-2">
+            {% for article in articles %}
+                <!-- 标题图 -->
+                {% if article.avatar %}
+                    {#                    使用Bootstrap的栅格系统来排列。每个格栅由12个小格栅组成#}
+                    <div class="col-3">
+                        <img src="{{ article.avatar.url }}"
+                             alt="avatar"
+                             style="max-width:100%; border-radius: 20px; max-height: 75%"
+                        >
+                    </div>
+                    <div class="col-9">
+                {% else %}
+                    <div class="col-12">
+                {% endif %}
+            <!-- 栏目 -->
+            {% if article.column %}
+                <button type="button"
+                        class="btn btn-sm mb-2
+                        {% if article.column.title == '算法竞赛' %}
+                            btn-success
+                        {% elif article.column.title == '应急管理' %}
+                            btn-danger
+                        {% elif article.column.title == '测试文章' %}
+                            btn-warning
+                        {% elif article.column.title == '政策解读' %}
+                            btn-light
+                        {% elif article.column.title == '时政专栏' %}
+                            btn-dark
+                        {% elif article.column.title == '通知公告' %}
+                            btn-outline-danger
+                        {% endif %}
+                    "
+                >
+                    {{ article.column }}
+                </button>
+            {% endif %}
+
+            <!-- 标签 -->
+            <span>
+                        {% for tag in article.tags.all %}
+                            <a href="{% url 'article:search_articles' %}?tag={{ tag }}"
+                               class="badge badge-secondary"
+                            >
+                            {{ tag }}
+                             </a>
+                        {% endfor %}
+                    </span>
+            <!-- 标题 -->
+            <h4>
+                <b>
+                    <a href="{% url 'article:article_detail' article.id %}"
+                       style="color: black;"
+                    >
+                        {{ article.title }}
+                    </a>
+                </b>
+            </h4>
+
+            <!-- 摘要 -->
+            <div>
+                <p style="color: gray;">
+                    {{ article.content|slice:'100' }}...
+                </p>
+            </div>
+            <!-- 注脚 -->
+            <p>
+                <!-- 附加信息 -->
+                <span>
+        <i class="fas fa-eye" style="color: lightskyblue;"></i>
+        {{ article.total_views }}&nbsp;&nbsp;&nbsp;
+    </span>
+                <span>
+        <i class="fas fa-comments" style="color: yellowgreen;"></i>
+                    <!-- 修改为评论的计数 -->
+        {{ article.comments.count }}&nbsp;&nbsp;&nbsp;
+    </span>
+                <span>
+        <i class="fas fa-clock" style="color: pink;"></i>
+        {{ article.updated|date:'Y-m-d' }}
+    </span>
+            </p>
+            <hr>
+            </div>
+            {% endfor %}
+            </div>
+
+
+            <!-- 页码导航 -->
+            <div class="pagination row">
+                <div class="m-auto">
+            <span class="step-links">
+                <!-- 如果不是第一页，则显示上翻按钮 -->
+                {% if articles.has_previous %}
+                    <a href="?page=1&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
+                       class="btn btn-success">
+                        &laquo; 1
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
+                       class="btn btn-secondary"
+                    >
+                        {{ articles.previous_page_number }}
+                    </a>
+                {% endif %}
+
+                <!-- 当前页面 -->
+                <span class="current btn btn-danger btn-lg">
+                    {{ articles.number }}
+                </span>
+
+                <!-- 如果不是最末页，则显示下翻按钮 -->
+                {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
+                       class="btn btn-secondary"
+                    >
+                        {{ articles.next_page_number }}
+                    </a>
+                    <span>...</span>
+                    <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}&search={{ search }}&column={{ column }}&tag={{ tag }}"
+                       class="btn btn-success"
+                    >
+                        {{ articles.paginator.num_pages }} &raquo;
+                    </a>
+                {% endif %}
+            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

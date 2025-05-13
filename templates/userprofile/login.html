@@ -1,25 +1,69 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %}
+{% load static %}
 {% block title %} 登录 {% endblock title %}
 {% block content %}
+    <style>
+        body {
+            background-image: url("{% static 'spring.jpg' %}");
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            top: 80px;
+            margin: auto;
+        }
+
+        .alert-custom {
+            margin-bottom: 20px;
+        }
+    </style>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <br>
-                <form method="post" action=".">
-                    {% csrf_token %}
-                    <!-- 账号 -->
-                    <div class="form-group">
-                        <label for="username">账号</label>
-                        <input type="text" class="form-control" id="username" name="username">
+                <div class="login-container">
+                    <h5 align="center" class="colors">登录以获得写文章的权限😉</h5>
+                    <h5 align="center" class="colors">还没有账号？<a href='{% url "userprofile:register" %}'>注册账号</a>加入我们吧！</h5>
+                    <h5 align="center" class="colors">忘记密码了？<a href='{% url "password_reset_recover" %}'>点击这里</a>重置密码</h5>
+
+                    <!-- 显示错误消息 -->
+                    {% if messages %}
+                    <div class="alert alert-danger alert-custom" role="alert">
+                        <ul class="mb-0">
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    <!-- 密码 -->
-                    <div class="form-group">
-                        <label for="password">密码</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <!-- 提交按钮 -->
-                    <button type="submit" class="btn btn-primary">提交</button>
-                </form>
+                    {% endif %}
+
+                    <form method="post" action="." id="form1">
+                        {% csrf_token %}
+                        <!-- 账号 -->
+                        <div class="form-group">
+                            <label class="labels colors" for="username">账号</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <!-- 密码 -->
+                        <div class="form-group">
+                            <label class="labels colors" for="password">密码</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <!-- 提交按钮 -->
+                        <button type="submit" class="btn btn-primary btn-block">提交</button>
+                    </form>
+                </div>
+
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </div>
         </div>
     </div>
